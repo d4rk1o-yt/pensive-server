@@ -30,10 +30,10 @@ const app = express();
 
 const http = require("http").createServer(app);
 const https = require("https").createServer(
-    {
-        cert: fs.readFileSync(path.join(__dirname, "ssl", "domain-crt.crt")),
-        key: fs.readFileSync(path.join(__dirname, "ssl", "domain-key.key"))
-    },
+    // {
+    //     cert: fs.readFileSync(path.join(__dirname, "ssl", "domain-crt.crt")),
+    //     key: fs.readFileSync(path.join(__dirname, "ssl", "domain-key.key"))
+    // },
     app
 );
 
