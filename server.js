@@ -224,12 +224,12 @@ function download(url, meta) {
                                             ffmetadata.write(
                                                 "completed/" + tempname + ".mp3",
                                                 {
-                                                    artist: artist,
-                                                    title: title,
-                                                    album: album
+                                                    artist: `${artist}`,
+                                                    title: `${title}`,
+                                                    album: `${album}`
                                                 },
                                                 {
-                                                    attachments: [filename]
+                                                    attachments: [`${filename}`]
                                                 },
                                                 function (err) {
                                                     if (err) {
@@ -254,9 +254,9 @@ function download(url, meta) {
                                     ffmetadata.write(
                                         "completed/" + tempname + ".mp3",
                                         {
-                                            artist: artist,
-                                            title: title,
-                                            album: album
+                                            artist: `${artist}`,
+                                            title: `${title}`,
+                                            album: `${album}`
                                         },
                                         {
                                             attachments: ["cover.jpg"]
