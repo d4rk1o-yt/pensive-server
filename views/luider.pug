@@ -1,0 +1,19 @@
+include layouts/header.pug
+
+div(class="container")
+  div.jumbotron.jumbotron-fluid.jumbotron-dark.bg-dark
+    div.container
+      h1.display-4.text-white Luider by Pensive
+      p.lead.text-white Luider is an advanced tool built by Pensive. We imagined this tool for everyone, allowing you to download MP3 files from YouTube
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+    </div>
+    <input type="text" id="query" class="form-control" placeholder="What are you looking for?" aria-label="What are you looking for?" aria-describedby="button-addon2">
+    <div class="input-group-append">
+      button(class="btn btn-primary", type="button", id="button-addon2", onclick="window.location.href = window.location.href.split('?')[0] + '?q=' + document.getElementById('query').value;") Search
+    </div>
+  </div>
+
+include layouts/footer.pug

@@ -1,0 +1,69 @@
+include layouts/header.pug
+
+div(class="container")
+  div.jumbotron.jumbotron-fluid.jumbotron-dark.bg-dark
+    div.container
+      h1.display-4.text-white Luider by Pensive
+      p.lead.text-white Luider is an advanced tool built by Pensive. We imagined this tool for everyone, allowing you to download MP3 files from YouTube
+
+  form(id="editForm", method="POST", action="?d=true&id=" + info.video_id)
+    div.form-group
+      label(for="title") Title
+      input.form-control(type="text" id="title" name="title" aria-describedby="textHelp" placeholder="Name of the song, e.g. " + info.title)
+    div.form-group
+      label(for="title") Album
+      input.form-control(type="text" id="album" name="album" aria-describedby="textHelp" placeholder="Name of the album")
+    div.form-group
+      label(for="title") Artist
+      input.form-control(type="text" id="artist" name="artist" aria-describedby="textHelp" placeholder="Name of the artist")
+    button.btn.btn-dark(type="submit") Download
+
+  script.
+    const editForm = document.getElementById("editForm");
+    editForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = new FormData(editForm);
+
+      //- $.get('demo_test_post.asp', (err, res) => console.log(err, res));
+
+      alert("Downloading")
+
+      $.ajax({
+        url: 'https://pensive.ml/apps/luider?d=true&id=q5oaZKVN_cU',
+        method: 'POST',
+        formData,
+        xhr: () => {
+          var xhr = new window.XMLHttpRequest();
+          xhr.upload.addEventListener("progress", function(evt) {
+            if (evt.lengthComputable) {
+              var percentComplete = evt.loaded / evt.total;
+              //Do something with upload progress here
+              console.log(percentComplete);
+            }
+          }, false);
+
+          xhr.addEventListener("progress", function(evt) {
+            if (evt.lengthComputable) {
+              var percentComplete = evt.loaded / evt.total;
+              //Do something with download progress
+              console.log(percentComplete);
+            }
+          }, false);
+
+          return xhr;
+        },
+        error: (err) => console.log(err),
+        success: (data) => {
+          //- const a = document.createElement("a");
+          //- var blob = new Blob(data, {type: 'audio/mpeg3'}),
+          //-     url = window.URL.createObjectURL(blob);
+          //- a.href = "https://pensive.ml/apps/luider?d=true&id=q5oaZKVN_cU";
+          //- a.download = "Blame.mp3";
+          //- a.click();
+          //- window.URL.revokeObjectURL(url);
+          console.log(data);
+        }
+      });
+    });
+
+include layouts/footer.pug
