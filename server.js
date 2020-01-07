@@ -92,22 +92,22 @@ app.post("/api/luider", async (req, res) => {
 
     if (query.id && query.d) {
         getInfo(query.id, async (url, info) => {
-            // download(url, req.body).then(file => {
-            //     res.download(file);
-            // }).catch(err => console.log(err));
+            download(url, req.body).then(file => {
+                res.download(file);
+            }).catch(err => console.log(err));
 
-            const stream = ytdl(url, { filter: 'audioonly' });
+            // const stream = ytdl(url, { filter: 'audioonly' });
 
-            res.setHeader('content-type', 'application/octet-stream');
-            res.writeHead(200);
+            // res.setHeader('content-type', 'application/octet-stream');
+            // res.writeHead(200);
 
-            stream.on("data", (chunk) => {
-                res.write(chunk);
-            });
+            // stream.on("data", (chunk) => {
+            //     res.write(chunk);
+            // });
 
-            stream.on("end", () => {
-                res.send();
-            });
+            // stream.on("end", () => {
+            //     res.send();
+            // });
         });
     }
 });
