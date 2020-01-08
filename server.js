@@ -124,7 +124,7 @@ http.listen(port, () => {
     fs.emptyDirSync("completed");
 });
 
-https.list(sport, () => {
+https.listen(sport, () => {
     console.log(`Secure server running on: ${sport}`);
 })
 
