@@ -25,9 +25,14 @@ var youtube = new YouTube();
 youtube.setKey(process.env.API_KEY);
 
 const port = process.env.PORT;
+const sport = process.env.SECURE_PORT;
 const app = express();
 
 const http = require("http").createServer(app);
+const https = require("https").createServer({
+    key: fs.readFileSync("ssl/domain-key.key"),
+    cert: fs.readFileSync("ssl/domain-crt.crt")
+}, app);
 
 const io = require("socket.io")(http);
 
@@ -118,6 +123,10 @@ http.listen(port, () => {
     fs.emptyDirSync("cache");
     fs.emptyDirSync("completed");
 });
+
+https.list(sport, () => {
+    console.log(`Secure server running on: ${sport}`);
+})
 
 function search(name) {
     return new Promise((resolve, reject) => {
