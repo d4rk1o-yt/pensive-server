@@ -33,7 +33,7 @@
     "pouchdb": "^7.1.1",
     "pouchdb-upsert": "^2.2.0",
     "progress": "^2.0.3",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "pully": "^2.7.0",
     "request": "^2.88.0",
     "socket.io": "^2.3.0",
